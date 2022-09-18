@@ -116,6 +116,9 @@ export class OIDCAuthenticationService extends BaseAuthenticationService {
     reset(): void {
         const config = this.authConfig.loadAppConfig();
         this.auth.updateIDPConfiguration(config);
-        this.auth.login();
+
+        if (config.oidc) {
+            this.auth.login();
+        }
     }
 }
